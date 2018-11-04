@@ -3,13 +3,13 @@ const FAQlg = document.getElementById("FAQ-alert-lg");
 
 function showFAQ() {
     if (window.screen.width>=992){
-        if (FAQlg.style.display === "none") {
+        if (FAQlg.style.display == "none") {
             FAQlg.style.display = "block";
         } else {
             FAQlg.style.display = "none";
         } 
     } else {
-        if (FAQ.style.display === "none") {
+        if (FAQ.style.display == "none") {
             FAQ.style.display = "block";
         } else {
             FAQ.style.display = "none";
