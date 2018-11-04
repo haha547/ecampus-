@@ -1,3 +1,4 @@
+/*-----------------COLOR---------------*/
 body,html {
     background-color: #102E37;
 }
@@ -43,7 +44,39 @@ a:hover {
   border: 3px solid #F78D3F;
 }
 
-.input100 {
-  color: #102E37;
+/*--------------------------------------------*/
+
+/*-----------------Alert----------------------*/
+
+.alert {
+    display: none;
 }
 
+.alert li {
+    list-style-type: circle;
+    margin-left: 20px;
+}
+
+#dec-li li {
+    list-style-type: decimal;
+}
+/*--------------------------------------------*/
+
+/*----------------btn-------------------------*/
+
+.btn-container {
+    margin-top: 10px;
+}
+.btn {
+    background-color: #F78D3F;
+    color: #fff;
+}
+
+/*--------------------------------------------*/
+
+
+/*---------------NAV--------------------------*/
+#nav {
+    background-color: white;
+}
+/*--------------------------------------------*/

@@ -15,6 +15,8 @@
   src: url('../fonts/ubuntu/Ubuntu-Bold.ttf'); 
 }
 
+@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
+
 /*//////////////////////////////////////////////////////////////////
 [ RESTYLE TAG ]*/
 
@@ -26,12 +28,12 @@
 
 body, html {
 	height: 100%;
-	font-family: Ubuntu-Regular, sans-serif;
+	font-family: Ubuntu-Regular, sans-serif, 'Noto Sans TC', sans-serif;
 }
 
 /*---------------------------------------------*/
 a {
-	font-family: Ubuntu-Regular;
+	font-family: Ubuntu-Regular, 'Noto Sans TC', sans-serif;
 	font-size: 14px;
 	line-height: 1.7;
 	color: #666666;
@@ -57,7 +59,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 p {
-	font-family: Ubuntu-Regular;
+	font-family: Ubuntu-Regular, 'Noto Sans TC', sans-serif;
 	font-size: 14px;
 	line-height: 1.7;
 	color: #666666;
@@ -119,7 +121,7 @@ iframe {
 /*//////////////////////////////////////////////////////////////////
 [ Utility ]*/
 .txt1 {
-  font-family: Ubuntu-Regular;
+  font-family: Ubuntu-Regular, 'Noto Sans TC', sans-serif;
   font-size: 16px;
   color: #827ffe;
   line-height: 1.4;
@@ -136,8 +138,8 @@ iframe {
 }
 
 .container-login100 {
-  width: 100%;  
-  min-height: 100vh;
+  width: 100%; 
+  min-height: 90vh;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -170,7 +172,7 @@ iframe {
 }
 
 .login100-form-title {
-  font-family: Ubuntu-Bold;
+  font-family: Ubuntu-Bold, 'Noto Sans TC', sans-serif;
   font-size: 30px;
   color: #403866;
   line-height: 1.2;
@@ -197,7 +199,7 @@ iframe {
 
 /*---------------------------------------------*/
 .input100 {
-  font-family: Ubuntu-Bold;
+  font-family: Ubuntu-Bold, 'Noto Sans TC', sans-serif;
   color: #403866;
   line-height: 1.2;
   font-size: 18px;
@@ -268,7 +270,7 @@ iframe {
 }
 
 .label-checkbox100 {
-  font-family: Ubuntu-Regular;
+  font-family: Ubuntu-Regular, 'Noto Sans TC', sans-serif;
   font-size: 16px;
   color: #999999;
   line-height: 1.2;
@@ -325,7 +327,7 @@ iframe {
 }
 
 .login100-form-btn {
-  font-family: Ubuntu-Bold;
+  font-family: Ubuntu-Bold, 'Noto Sans TC', sans-serif;
   font-size: 16px;
   color: #fff;
   line-height: 1.2;
@@ -363,7 +365,6 @@ iframe {
 }
 
 .alert-validate::before {
-  content: attr(data-validate);
   position: absolute;
   max-width: 70%;
   background-color: #fff;
@@ -379,7 +380,7 @@ iframe {
   right: 12px;
   pointer-events: none;
 
-  font-family: Ubuntu-Regular;
+  font-family: Ubuntu-Regular, 'Noto Sans TC', sans-serif;
   color: #c80000;
   font-size: 14px;
   line-height: 1.4;
