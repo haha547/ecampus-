@@ -10,11 +10,14 @@
 ------------
 #### 後端
 * Python 3
+  * BeautifulSoup
+  * requests
 * Django
+* Sqlite 3
 #### 前端
-* bootstrap 4
-* javascript
-* html+css
+* Bootstrap 4
+* Javascript
+* Html + Css
 
 已實現功能
 ---------
@@ -26,6 +29,10 @@
 <br>
 移動設備  
 ![login](/static/images/readme/login_mobile.png)
+
+### 課程頁面(尚未設計)
+登入後顯示的課程  
+![course](/static/images/readme/course.png)
 
 預期實現目標
 -----------
