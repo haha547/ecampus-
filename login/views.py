@@ -3,6 +3,7 @@ from login.models import student
 import requests
 from bs4 import BeautifulSoup
 import re
+import sys
 # Create your views here.
 def post(request):
     if request.method == "POST":#以下是爬蟲程式
@@ -10,7 +11,7 @@ def post(request):
         messP = request.POST ['pass']
         url = "http://ecampus.nqu.edu.tw/eCampus3P/Learn/LoginPage2/product_login.aspx"#ecampus的login url
         headers = {'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36'}
-
+        #headers還不知道怎麼抓但是我想都差不多一樣
         resp = requests.post(url, headers = headers , data={
             '__EVENTTARGET': '',
             '__EVENTARGUMENT': '', 
@@ -18,13 +19,21 @@ def post(request):
             '__VIEWSTATEGENERATOR': '8B4B7C2A',
             'txtLoginId': mess,# studentID
             'txtLoginPwd': messP,# password
-            'btnLogin.x' : '44',
-            'btnLogin.y' : '25',
+            'btnLogin.x' : '44',#應該填多少也沒差
+            'btnLogin.y' : '25',#應該填多少也沒差
         })
         soup = BeautifulSoup(resp.text,"lxml")
-        ans = soup.find(text=re.compile("登入帳號不存在或密碼錯誤"))
+        course_name = soup.find_all(id = re.compile("CourseName"))
+        index=[]
+        for courseName in course_name:
+            index.append(courseName.string)
+        for i in index:
+            print (i)
+            
+        '''ans = soup.find(text=re.compile("登入帳號不存在或密碼錯誤"))
         if ans != None:#帳號或是密碼有問題
             print ("error you mdfk ")
         else :#進入系統
-            print ("you'r in there")
-        return render(request, "index.html", locals())
+            print ("you'r in there"'''
+
+        return render(request, "course.html", locals())#會跑到course.html模板
