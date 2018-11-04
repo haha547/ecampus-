@@ -1,0 +1,49 @@
+body,html {
+    background-color: #102E37;
+}
+
+a:hover {
+    color: #FCD271;
+}
+
+.txt1 {
+    color: #F78D3F;
+}
+
+.wrap-login100 {
+  background-color: #102E37;  
+}
+
+.login100-form-title {
+    color: #F78D3F;
+}
+
+.input100 {
+    color: #102E37;
+}
+
+.label-checkbox100::before {
+    border: 2px solid #F78D3F;
+    background: transparent;
+}
+
+.input-checkbox100:checked + .label-checkbox100::before {
+    color: #F78D3F;
+}
+
+.login100-form-btn {
+    background-color: #F78D3F;
+}
+
+.login100-form-btn:hover {
+    background-color: #FCD271;
+}
+
+.focus-input100 {
+  border: 3px solid #F78D3F;
+}
+
+.input100 {
+  color: #102E37;
+}
+
