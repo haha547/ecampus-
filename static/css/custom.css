@@ -60,6 +60,10 @@ a:hover {
 #dec-li li {
     list-style-type: decimal;
 }
+
+.alert p {
+    color: #000000;
+}
 /*--------------------------------------------*/
 
 /*----------------btn-------------------------*/
@@ -70,6 +74,10 @@ a:hover {
 .btn {
     background-color: #F78D3F;
     color: #fff;
+}
+
+.btn:hover {
+    background-color: #FCD271;
 }
 
 /*--------------------------------------------*/
