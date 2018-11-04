@@ -27,9 +27,6 @@ def post(request):
         index=[]
         for courseName in course_name:
             index.append(courseName.string)
-        for i in index:
-            print (i)
-            
         '''ans = soup.find(text=re.compile("登入帳號不存在或密碼錯誤"))
         if ans != None:#帳號或是密碼有問題
             print ("error you mdfk ")
