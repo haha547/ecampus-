@@ -1,6 +1,24 @@
-{% for i in index%}
-{{i}}<br>
-{% endfor %}
+{% load staticfiles %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/course.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<div class="container">
+    <div class="row">
+        <div class="col-6 course-li">
+            <ul>
+            {% for course in index%}
+                <li><a href="{{ course.url }}">{{ course.name }}</a></li>
+            {% endfor %}
+            </ul>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-5">
+            
+        </div>
+        
+    </div>
+</div>
 
 <!--<div> ctl00_ContentPlaceHolder1_rptStu_ctl02_lbCourseName 數位邏輯  </div>-->
 <!--<div> ctl00_ContentPlaceHolder1_rptStu_ctl03_lbCourseName  資料結構 </div>-->

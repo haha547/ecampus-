@@ -1,0 +1,15 @@
+/**
+    Color: #FCD271, #F78D3F, #2BBBD8, #102E37;
+*/
+
+body,html {
+    border-color: #fff;
+}
+
+.course-li a {
+    color: #F78D3F;
+}
+
+.course-li a:hover {
+    color: #FCD271;
+}
