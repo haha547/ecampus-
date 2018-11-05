@@ -23,10 +23,15 @@ def post(request):
             'btnLogin.y' : '25',#應該填多少也沒差
         })
         soup = BeautifulSoup(resp.text,"lxml")
-        course_name = soup.find_all(id = re.compile("CourseName"))
         index=[]
-        for courseName in course_name:
-            index.append(courseName.string)
+        courseList=[]
+        for i in soup.find_all(id = re.compile("CourseName")):
+            index.append(i.string)
+        for i in soup.find_all("input", {'url': re.compile('stu_course_default.aspx?')}):
+            courseList.append("http://ecampus.nqu.edu.tw/eCampus3P/Learn/"+i["url"]) 
+
+
+
         '''ans = soup.find(text=re.compile("登入帳號不存在或密碼錯誤"))
         if ans != None:#帳號或是密碼有問題
             print ("error you mdfk ")
