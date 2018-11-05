@@ -13,3 +13,7 @@ body,html {
 .course-li a:hover {
     color: #FCD271;
 }
+
+.course-name {
+    margin-left: 50%;
+}

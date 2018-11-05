@@ -21,3 +21,13 @@ function showFAQ() {
 function closeAlert() {
     FAQ.style.display = "none";
 }
+
+const course_list = document.getElementById('course-content');
+
+function showContent(){
+    if (course_list.style.display == "none") {
+        course_list.style.display = "block";
+    } else {
+        course_list.style.display = "none";
+    } 
+}
