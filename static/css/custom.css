@@ -1,90 +1,318 @@
-/*-----------------COLOR---------------*/
-body,html {
-    background-color: #102E37;
+/*//////////////////////////////////////////////////////////////////
+[ FONT ]*/
+
+@font-face {
+  font-family: Ubuntu-Regular;
+  src: url('../fonts/ubuntu/Ubuntu-Regular.ttf'); 
 }
 
-a:hover {
-    color: #FCD271;
+@font-face {
+  font-family: Ubuntu-Bold;
+  src: url('../fonts/ubuntu/Ubuntu-Bold.ttf'); 
 }
 
-.txt1 {
-    color: #F78D3F;
+@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
+
+/*//////////////////////////////////////////////////////////////////*/
+
+.btn-bold {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 800;
+    font-size: 26px;
 }
 
-.wrap-login100 {
-  background-color: #102E37;  
-}
-
-.login100-form-title {
-    color: #F78D3F;
-}
-
-.input100 {
+.forget-link a {
     color: #102E37;
 }
 
+.forget-link a:hover {
+    color: #2BBBD8;
+}
+
+.pb_gradient_v1:before {
+  background: #F78D3F;
+  /* Old browsers */
+  background: -moz-linear-gradient(45deg, #F78D3F 0%, #FFC107 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(45deg, #F78D3F 0%, #FFC107 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: -o-linear-gradient(45deg, #F78D3F 0%, #FFC107 100%);
+  background: linear-gradient(45deg, #F78D3F 0%, #FFC107 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#665fee', endColorstr='#27c2de',GradientType=1 );
+  /* IE6-9 fallback on horizontal gradient */
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0; }
+
+.pb_icon-gradient:before {
+  background: #F78D3F;
+  /* Old browsers */
+  background: -moz-linear-gradient(45deg, #F78D3F 0%, #FFC107 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(45deg, #F78D3F 0%, #FFC107 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: -o-linear-gradient(45deg, #F78D3F 0%, #FFC107 100%);
+  background: linear-gradient(45deg, #F78D3F 0%, #FFC107 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; }
+
+/*faq hover color*/
+
+
+
+
+/*==================================================================
+[ Form ]*/
+
+.login100-form {
+  width: 100%;
+}
+
+.login100-form-title {
+  font-family: 'Noto Sans TC', sans-serif, Ubuntu-Bold;
+  font-weight: 800;
+  font-size: 30px;
+  color: #403866;
+  line-height: 1.2;
+  text-transform: uppercase;
+  text-align: center;
+
+  width: 100%;
+  display: block;
+}
+
+/*-----------------------------------------------------------
+[ Input ]*/
+.input100 {
+  font-family: Ubuntu-Bold, 'Noto Sans TC', sans-serif;
+  font-weight: bold;
+  color: #403866;
+  line-height: 1.2;
+  font-size: 18px;
+
+  display: block;
+  width: 100%;
+  background: transparent;
+  height: 62px;
+  padding: 0 20px 0 38px;
+}
+
+/*------------------------------------------------------------------
+[ Focus Input ]*/
+
+.focus-input100 {
+  position: absolute;
+  display: block;
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  top: -1px;
+  left: -1px;
+  pointer-events: none;
+  border: 1px solid #827ffe;
+  border-radius: 3px;
+
+  visibility: hidden;
+  opacity: 0;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+
+  -webkit-transform: scaleX(1.1) scaleY(1.3);
+  -moz-transform: scaleX(1.1) scaleY(1.3);
+  -ms-transform: scaleX(1.1) scaleY(1.3);
+  -o-transform: scaleX(1.1) scaleY(1.3);
+  transform: scaleX(1.1) scaleY(1.3);
+}
+
+.form-control:focus + .focus-input100 {
+  visibility: visible;
+  opacity: 1;
+
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+}
+
+.eff-focus-selection {
+  visibility: visible;
+  opacity: 1;
+
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+}
+
+
+/*==================================================================
+[ Restyle Checkbox ]*/
+
+.input-checkbox100 {
+  display: none;
+}
+
+.label-checkbox100 {
+  font-family: Ubuntu-Regular, 'Noto Sans TC', sans-serif;
+  font-size: 16px;
+  color: #102E37;
+  line-height: 1.2;
+
+  display: block;
+  position: relative;
+  padding-left: 26px;
+  cursor: pointer;
+}
+
 .label-checkbox100::before {
-    border: 2px solid #F78D3F;
-    background: transparent;
+  content: "\f00c";
+  font-family: FontAwesome;
+  font-size: 13px;
+  color: transparent;
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 3px;
+  background: #fff;
+  border: 2px solid #827ffe;
+  left: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 .input-checkbox100:checked + .label-checkbox100::before {
-    color: #F78D3F;
+  color: #827ffe;
+}
+
+
+/*------------------------------------------------------------------
+[ Button ]*/
+.container-login100-form-btn {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .login100-form-btn {
-    background-color: #F78D3F;
+  font-family: Ubuntu-Bold, 'Noto Sans TC', sans-serif;
+  font-weight: 800;
+  font-size: 16px;
+  color: #fff;
+  line-height: 1.2;
+  text-transform: uppercase;
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  width: 100%;
+  height: 62px;
+  background-color: #827ffe;
+  border-radius: 3px;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
 }
 
 .login100-form-btn:hover {
-    background-color: #FCD271;
+  background-color: #403866;
 }
 
-.focus-input100 {
-  border: 3px solid #F78D3F;
+
+/*------------------------------------------------------------------
+[ Alert validate ]*/
+
+.validate-input {
+  position: relative;
 }
 
-/*--------------------------------------------*/
+.alert-validate::before {
+  content: attr(data-validate);
+  position: absolute;
+  max-width: 70%;
+  background-color: #fff;
+  border: 1px solid #c80000;
+  border-radius: 3px;
+  padding: 4px 25px 5px 10px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  right: 12px;
+  pointer-events: none;
 
-/*-----------------Alert----------------------*/
+  font-family: Ubuntu-Regular, 'Noto Sans TC', sans-serif;
+  color: #c80000;
+  font-size: 14px;
+  line-height: 1.4;
+  text-align: left;
 
-.alert {
-    display: none;
+  visibility: hidden;
+  opacity: 0;
+
+  -webkit-transition: opacity 0.4s;
+  -o-transition: opacity 0.4s;
+  -moz-transition: opacity 0.4s;
+  transition: opacity 0.4s;
 }
 
-.alert li {
-    list-style-type: circle;
-    margin-left: 20px;
+.alert-validate::after {
+  content: "\f12a";
+  font-family: FontAwesome;
+  display: block;
+  position: absolute;
+  color: #c80000;
+  font-size: 18px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  right: 18px;
 }
 
-#dec-li li {
-    list-style-type: decimal;
+.alert-validate:hover:before {
+  visibility: visible;
+  opacity: 1;
 }
 
-.alert p {
-    color: #000000;
+@media (max-width: 992px) {
+  .alert-validate::before {
+    visibility: visible;
+    opacity: 1;
+  }
 }
-/*--------------------------------------------*/
-
-/*----------------btn-------------------------*/
-
-.btn-container {
-    margin-top: 10px;
-}
-.btn {
-    background-color: #F78D3F;
-    color: #fff;
-}
-
-.btn:hover {
-    background-color: #FCD271;
-}
-
-/*--------------------------------------------*/
-
-
-/*---------------NAV--------------------------*/
-#nav {
-    background-color: white;
-}
-/*--------------------------------------------*/
