@@ -8,9 +8,9 @@
     <div class="row">
         <div class="col-6 course-li">
             <ul>
-            {% for course in index%}
-                <li><a href="#" onclick="showContent()">
-                    <h3>{{ course.name }}<span class="course-name">
+            {% for key,value in user_Dict.items%}
+                <li><a href="{{value}}" onclick="showContent()">
+                    <h3>{{key}}<span class="course-name">
                     <i class="fas fa-plus" ></i></span></h3></a>
                     <div id="course-content" class="course-content" style="display: none;">
                         <ul>
@@ -58,6 +58,3 @@
     </div>
 </div>
 <script src= "{% static "js/custom.js" %}"></script>
-<!--<div> ctl00_ContentPlaceHolder1_rptStu_ctl02_lbCourseName 數位邏輯  </div>-->
-<!--<div> ctl00_ContentPlaceHolder1_rptStu_ctl03_lbCourseName  資料結構 </div>-->
-
