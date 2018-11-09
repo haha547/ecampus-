@@ -15,6 +15,97 @@
 
 /*//////////////////////////////////////////////////////////////////*/
 
+/*Cookie banner*/
+
+/*---POPUP Media Queries --*/
+@media (max-width: 640px) {
+    .bottom {
+        margin-top: 10px;
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
+    }
+  }
+@media (min-width: 640px) {
+    .POPUP {
+        width: 350px;
+        margin: 10px;
+    }
+    .bottom {
+        bottom: 20px;
+        left: 20px;
+    }
+}
+
+.cookie-banner {
+    visibility: hidden;
+    display: flex;
+    background-color: rgb(26, 26, 26, .85);
+    justify-content: space-between;
+    align-items: center;      
+    box-sizing: border-box;
+    z-index: 300000;
+    padding: 10px;
+    position: fixed;
+}
+
+#cookie.show {
+    visibility: visible;
+}
+
+.cookie-banner-text {
+    color: white;
+}
+
+.cookie-banner-text a {
+    color: white;
+    border-bottom: 2px solid white;
+}
+
+.cookie-banner-acceptWrapper {
+    border: 0;
+    padding: 5px 10px;
+}
+
+.cookie-banner-accept {
+    white-space: nowrap;
+    background-color: transparent;
+    border-color: transparent;
+    font-size: 12px;
+    line-height: 1.5em;
+    font-weight: normal;
+    font-style: normal;
+    letter-spacing: .05em;
+    margin: 10px !important;
+}
+
+.cookie-banner-accept:after {
+    content: 'x';
+    color: white;
+    font-weight: 100;
+    line-height: .5em;
+    font-size: 35px;
+}
+
+.button {
+    text-rendering: auto;
+    word-spacing: normal;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    align-items: flex-start;
+    text-align: center;
+    box-sizing: border-box;
+    text-transform: none;
+    overflow: visible;
+    font: inherit;
+    -webkit-appearance: button;
+    cursor: pointer;
+}
+
+
+/*//////////////////////////////////////////////////////////////////*/
+
 .btn-bold {
     font-family: 'Noto Sans TC', sans-serif;
     font-weight: 800;
@@ -61,7 +152,10 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; }
 
-/*faq hover color*/
+/*footer copyright*/
+.footer-p {
+    color: #000;
+}
 
 
 

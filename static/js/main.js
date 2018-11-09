@@ -7,6 +7,7 @@ $(document).ready(function($) {
 		setTimeout(function() { 
 			if($('#pb_loader').length > 0) {
 				$('#pb_loader').removeClass('show');
+                $('#cookie').addClass('show');
 			}
 		}, 700);
 	};
@@ -215,8 +216,15 @@ $(document).ready(function($) {
 	ytpPlayer();
 
 
-	
-
+	var dismissCookie = function() {
+        var button = $('.button');
+        if( button.length > 0 ) {
+            button.click(function(e){
+               $(".cookie-banner").fadeOut();
+            });
+        }
+    };
+    dismissCookie();	
 
 });
 
