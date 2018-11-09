@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-tw">
+	<head>
+        <title>{% block website-title %} {% endblock %}</title>
+		{% include '../_includes/header-tag.html' %}
+    </head>
+    
+	<body data-spy="scroll" data-target="#pb-navbar" data-offset="200">
+    {% block content %} {% endblock %}
+    
+    {% include '../_includes/script.html' %}
+    </body>
+
+</html>
