@@ -66,6 +66,7 @@
           <div class="col-md-5 relative align-self-center">
             
             <form action="/course/" method="POST" name="loginForm" class="validate-form bg-white rounded pb_form_v1">
+              {% csrf_token %}
 					<span class="login100-form-title p-b-51">
 						快速登入
 					</span>					
