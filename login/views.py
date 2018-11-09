@@ -34,8 +34,10 @@ def post(request):
 
         for i in soup.find_all("input",{'url': re.compile('stu_course_default.aspx?')}):
             course_URL.append(i["url"])
-
-        user_Dict= dict(zip(course_Name,course_URL))
+        user_Dict= dict(zip(course_Name,course_URL)) 
+        if len(user_Dict) == 0:
+            return render(request, "error_login.html")#回傳到index做登入錯誤
+            
         soup.decompose = True
         soup.clear()
         #可以存入加密過後的兩個 cookie一個明碼的學號,一個加密的密碼 
@@ -50,6 +52,7 @@ def post(request):
         return render(request, "course.html", locals())#會跑到course.html模板
 
 def find_CurrAccID (course_url, id_enter, password):#找出CurrAccID這個有點難但是我還是把它弄出來了拉幹
+       
     s= requests.session()
     headers = {'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36'}
     login_DataFrom = {'__EVENTTARGET': '',
