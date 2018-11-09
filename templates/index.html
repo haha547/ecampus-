@@ -40,38 +40,39 @@
           </div>
           <div class="col-md-5 relative align-self-center">
             
-            <form action="/course/" method="POST" name="loginForm" class="validate-form bg-white rounded pb_form_v1">
-					<span class="login100-form-title p-b-51">
-						快速登入
-					</span>					
-					<div class="validate-input form-group" data-validate = "Username is required">
-						<input class="input100 form-control pb_height-50 reverse" type="text" name="stuID" placeholder="學號">
-						<span class="focus-input100"></span>
-					</div>									
-					<div class="validate-input form-group" data-validate = "Password is required">
-						<input class="input100 form-control pb_height-50 reverse" type="password" name="pwd" placeholder="密碼">
-						<span class="focus-input100"></span>
-					</div>
-					
-					<div class="flex-sb-m w-full p-t-3 p-b-24">
-						<div class="contact100-form-checkbox">
-							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-							<label class="label-checkbox100" for="ckb1">
-								記住我
-							</label>
-						</div>
+          <form action="/course/" method="POST" name="loginForm" class="validate-form bg-white rounded pb_form_v1">
+              {% csrf_token %}
+            <span class="login100-form-title p-b-51">
+              快速登入
+            </span>					
+            <div class="validate-input form-group" data-validate = "Username is required">
+              <input class="input100 form-control pb_height-50 reverse" type="text" name="stuID" placeholder="學號">
+              <span class="focus-input100"></span>
+            </div>									
+            <div class="validate-input form-group" data-validate = "Password is required">
+              <input class="input100 form-control pb_height-50 reverse" type="password" name="pwd" placeholder="密碼">
+              <span class="focus-input100"></span>
+            </div>
+            
+            <div class="flex-sb-m w-full p-t-3 p-b-24">
+              <div class="contact100-form-checkbox">
+                <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                <label class="label-checkbox100" for="ckb1">
+                  記住我
+                </label>
+              </div>
 
-						<div class="forget-link">
-							<a href="#" class="txt1">
-								忘記密碼?
-							</a>
-						</div>
-					</div>
-					<div class="container-login100-form-btn m-t-17">
-						<button class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue">
-							Login
-						</button>
-					</div>
+              <div class="forget-link">
+                <a href="#" class="txt1">
+                  忘記密碼?
+                </a>
+              </div>
+            </div>
+            <div class="container-login100-form-btn m-t-17">
+              <button class="btn btn-primary btn-lg btn-block pb_btn-pill btn-shadow-blue">
+                Login
+              </button>
+            </div>
 				</form>
           </div> 
         </div>
@@ -384,38 +385,39 @@
           </div> 
           <div class="col-md-1"></div>
           <div class="col-md-5">
-             <form class="validate-form bg-white rounded pb_form_v1">
-					<span class="login100-form-title p-b-51">
-						快速登入
-					</span>					
-					<div class="validate-input form-group" data-validate = "Username is required">
-						<input class="input100 form-control pb_height-50 reverse" type="text" name="stuID" placeholder="學號">
-						<span class="focus-input100"></span>
-					</div>									
-					<div class="validate-input form-group" data-validate = "Password is required">
-						<input class="input100 form-control pb_height-50 reverse" type="password" name="pwd" placeholder="密碼">
-						<span class="focus-input100"></span>
-					</div>
-					
-					<div class="flex-sb-m w-full p-t-3 p-b-24">
-						<div class="contact100-form-checkbox">
-							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-							<label class="label-checkbox100" for="ckb1">
-								記住我
-							</label>
-						</div>
-
-						<div class="forget-link">
-							<a href="#" class="txt1">
-								忘記密碼?
-							</a>
-						</div>
-					</div>
-					<div class="container-login100-form-btn m-t-17">
-						<button class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue">
-							Login
-						</button>
-					</div>
+          <form action="/course/" method="POST" name="loginForm" class="validate-form-2 bg-white rounded pb_form_v1">
+           {% csrf_token %}
+           <span class="login100-form-title p-b-51">
+              快速登入
+            </span>					
+            <div class="validate-input-2 form-group" data-validate = "Username is required">
+              <input class="input100 form-control-2 pb_height-50 reverse" type="text" name="stuID" placeholder="學號">
+              <span class="focus-input100"></span>
+            </div>									
+            <div class="validate-input-2 form-group" data-validate = "Password is required">
+              <input class="input100 form-control-2 pb_height-50 reverse" type="password" name="pwd" placeholder="密碼">
+              <span class="focus-input100"></span>
+            </div>
+            
+            <div class="flex-sb-m w-full p-t-3 p-b-24">
+              <div class="contact100-form-checkbox">
+                <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                <label class="label-checkbox100" for="ckb1">
+                  記住我
+                </label>
+              </div>
+  
+              <div class="forget-link">
+                <a href="#" class="txt1">
+                  忘記密碼?
+                </a>
+              </div>
+            </div>
+            <div class="container-login100-form-btn m-t-17">
+              <button class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue">
+                Login
+              </button>
+            </div>
 				</form>
           </div>
         </div>

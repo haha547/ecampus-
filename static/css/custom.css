@@ -225,7 +225,7 @@
   transform: scaleX(1.1) scaleY(1.3);
 }
 
-.form-control:focus + .focus-input100 {
+.form-control:focus + .focus-input100, .form-control-2:focus + .focus-input100 {
   visibility: visible;
   opacity: 1;
 
@@ -347,7 +347,7 @@
 /*------------------------------------------------------------------
 [ Alert validate ]*/
 
-.validate-input {
+.validate-input, .validate-input-2 {
   position: relative;
 }
 
@@ -410,3 +410,37 @@
     opacity: 1;
   }
 }
+
+/*Second Form*/
+
+.form-control-2 {
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.25rem;
+}
+.form-control-2.reverse {
+  background: #f2f2f2;
+  -webkit-transition: .3s all ease;
+  -o-transition: .3s all ease;
+  transition: .3s all ease;
+  border-color: #f2f2f2; }
+.form-control-2.reverse:focus, .form-control-2.reverse:active {
+  background: none;
+  border-color: #1d82ff !important; }
+
+.form-control-2-outline {
+background: none; }
+.form-control-2-outline:focus, .form-control-2-outline:active {
+background: none; }
+.form-control-outline.light {
+color: #fff;
+border-color: rgba(255, 255, 255, 0.4); }
+.form-control-2-outline.light:focus, .form-control-2-outline.light:active {
+  border-color: white; }
+.form-control-2-outline.light::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.5); }
+.form-control-2-outline.light:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.5); }
+.form-control-2-outline.light::placeholder {
+  color: rgba(255, 255, 255, 0.5); }
+.form-control-2-outline.dark {
+color: #868e96; }
