@@ -10,8 +10,8 @@ from login.models import userData
 # Create your views here.
 def post(request):
     if request.method == "POST":#以下是爬蟲程式
-        cID = request.POST ['studentID']
-        cPassword = request.POST ['pass']
+        cID = request.POST ['stuID']
+        cPassword = request.POST ['pwd']
         url = "http://ecampus.nqu.edu.tw/eCampus3P/Learn/LoginPage2/product_login.aspx"#ecampus的login url
         headers = {'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36'}
         #headers還不知道怎麼抓但是我想都差不多一樣
