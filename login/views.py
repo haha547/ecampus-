@@ -1,4 +1,5 @@
 from django.shortcuts import render 
+from django.http import HttpResponse
 import requests
 from bs4 import BeautifulSoup
 import re
@@ -35,6 +36,8 @@ def post(request):
             course_URL.append(i["url"])
 
         user_Dict= dict(zip(course_Name,course_URL))
+        soup.decompose = True
+        soup.clear()
         #可以存入加密過後的兩個 cookie一個明碼的學號,一個加密的密碼 
         #cCurrAccID之後填入
         try:
@@ -43,7 +46,7 @@ def post(request):
             cCurrAccID = find_CurrAccID("http://ecampus.nqu.edu.tw/eCampus3P/Learn/"+ course_URL[0],cID,cPassword)
             print ("there is a user sign in")
             unit = userData.objects.create(cID=cID, cPassword=cPassword, cCurrAccID=cCurrAccID)
-            unit.save()
+            unit.save()    
         return render(request, "course.html", locals())#會跑到course.html模板
 
 def find_CurrAccID (course_url, id_enter, password):#找出CurrAccID這個有點難但是我還是把它弄出來了拉幹
@@ -68,9 +71,21 @@ def find_CurrAccID (course_url, id_enter, password):#找出CurrAccID這個有點
 
 
 
+
+
+
 """
+def set_cookie(user_name):
+
+cookie = HttpResponse("user")
+cookie.set_cookie(user, cID)
+
 def courseLink(request,course_Link):
     return(request,"course.html",locals())
+
+
+
+
 
 
 def test (course_url, id_enter, password):#帶入帳號密碼以及課程連結
