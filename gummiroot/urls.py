@@ -19,9 +19,6 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     path('', include('login.urls')),
-    
-    path('course/', include('login.urls')),
-    #path('course/(\w+)/$', include('login.urls')),
     path('test/', TemplateView.as_view(template_name="test.html")),
     path('admin/', admin.site.urls),
 
