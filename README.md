@@ -23,22 +23,47 @@
 ---------
 可以用學號登入到教學平台，並且列出所有課程。
 
-### 登入畫面
-正常畫面
-![login](/static/images/readme/login.png)  
-<br>
-移動設備  
-![login](/static/images/readme/login_mobile.png)
-
-### 課程頁面(尚未設計)
-登入後顯示的課程  
-![course](/static/images/readme/course.png)
+11/13新增 點進課程可顯示公告。
 
 預期實現目標
 -----------
 1. 在課程表顯示作業公告
 
 2. 爬取課程中所需資訊(諸如: 作業、文件...等)
+
+#### Course List
+<pre>
+├── Slidebar  
+|  ├── Home  
+|  |   ├──All HW
+|  |   ├──All BBS   
+|  |   └──All DOC
+|  |
+|  ├── Course
+|  |   ├── #course1  
+|  |       ├──HW
+|  |       ├──BBS
+|  |       └──DOC
+|  |   ├── #course2  
+|  |       ├──HW
+|  |       ├──BBS
+|  |       └──DOC
+|  |   ├── #course3  
+|  |       ├──HW
+|  |       ├──BBS
+|  |       └──DOC
+|  |   └── #course4  
+|  |       ├──HW
+|  |       ├──BBS
+|  |       └──DOC
+|  ├── User  
+|  |   ├──Profile
+|  |   └──Sign out 
+|  | 
+|  ├── FAQ  
+|  | 
+|  └── Contact us / Issue Report 
+</pre>
 
 產品特色
 -----------
