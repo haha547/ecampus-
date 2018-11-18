@@ -51,7 +51,7 @@ def post(request):
             print("有人創帳號嘍")
         request.session ["user_id"] = cID #設定本站的session
         print (request.session ["user_id"])
-        return render(request, "course.html", locals())#會跑到course.html模板
+        return render(request, "course/course.html", locals())#會跑到course.html模板
 
 
 
