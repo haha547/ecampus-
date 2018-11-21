@@ -40,7 +40,6 @@ def post(request):
             course_Name.append(i.string)
         for i in soup.find_all("input",{'url': re.compile('stu_course_default.aspx?')}):
             course_URL.append(i["url"][33:69])
-<<<<<<< HEAD
         cName= soup.find(id="ctl00_lbAccount").string
         user_Dict= dict(zip(course_Name,course_URL)) 
         if len(user_Dict) == 0:
@@ -60,28 +59,6 @@ def post(request):
         request.session ["user_id"] = cID #設定本站的session
         print (request.session ["user_id"])
         return render(request, "course/course.html", locals())#會跑到course.html模板
-=======
-        if soup.find(id="ctl00_lbAccount") == None:#用這個判定是否正確登入
-            return HttpResponse("error!!")#假如登入錯誤就輸出錯誤訊息
-        else:
-            cName= soup.find(id="ctl00_lbAccount").string
-            user_Dict= dict(zip(course_Name,course_URL)) 
-            soup.decompose = True
-            soup.clear()
-            try:
-                unit = userData.objects.get(cID=cID, cPassword=cPassword)
-                print("有人登入拉")
-            except:
-                cCurrAccID = find_CurrAccID("http://ecampus.nqu.edu.tw/eCampus3P/Learn/stu_course_default.aspx?CourseId="+ course_URL[0]+"&Role=Student",cID,cPassword)
-                unit = userData.objects.create(cID=cID, cPassword=cPassword, cCurrAccID=cCurrAccID[10:], cName=cName)
-                unit.save()
-                n_File_Floder_url = "./user_Check/"+unit.cID
-                if not os.path.isdir(n_File_Floder_url):
-                    os.mkdir(n_File_Floder_url)
-                print("有人創帳號嘍")
-            request.session ["user_id"] = cID #設定本站的session
-            return render(request, "course.html", locals())#會跑到course.html模板
->>>>>>> 5928fa65cf5e1c99b77b264e61f1cd2b8df0ee5b
 
 
 
