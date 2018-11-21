@@ -6,6 +6,16 @@ import requests#爬蟲
 import re
 import sys
 import os
+import pyrebase
+config = {
+    "apiKey": "AIzaSyBzIE28WS3omyQgfeoz_3h2qcyu_KzD_Wg",
+    "authDomain": "nquyes.firebaseapp.com",
+    "databaseURL": "https://nquyes.firebaseio.com",
+    "projectId": "nquyes",
+    "storageBucket": "nquyes.appspot.com",
+    "messagingSenderId": "659605466677"
+  }
+firebase= pyrebase.initialize_app(config)
 
 
 
@@ -44,10 +54,8 @@ def post(request):
         user_Dict= dict(zip(course_Name,course_URL)) 
         if len(user_Dict) == 0:
             return render(request, "error_login.html",eooro_login = True)#回傳到index做登入錯誤
-        
         soup.decompose = True
         soup.clear()
-        
         try:
             unit = userData.objects.get(cID=cID, cPassword=cPassword)
             print("有人登入拉")
@@ -55,9 +63,16 @@ def post(request):
             cCurrAccID = find_CurrAccID("http://ecampus.nqu.edu.tw/eCampus3P/Learn/stu_course_default.aspx?CourseId="+ course_URL[0]+"&Role=Student",cID,cPassword)
             unit = userData.objects.create(cID=cID, cPassword=cPassword, cCurrAccID=cCurrAccID[10:], cName=cName)
             unit.save()
+            File_Floder_url = "./user_Check/"+unit.cID
+            print(File_Floder_url)
+            if not os.path.isdir(File_Floder_url):
+                os.mkdir(File_Floder_url)
+            for i in course_Name:
+                n_File_Floder_url ="./user_Check/" +unit.cID+ "/" + str(i)+"/"
+                if not os.path.isdir(n_File_Floder_url):
+                    os.mkdir(n_File_Floder_url)
             print("有人創帳號嘍")
         request.session ["user_id"] = cID #設定本站的session
-        print (request.session ["user_id"])
         return render(request, "course/course.html", locals())#會跑到course.html模板
 
 
@@ -78,16 +93,9 @@ def find_CurrAccID (course_url, id_enter, password):#找出CurrAccID這個有點
     r= s.get("http://ecampus.nqu.edu.tw/eCampus3P/Learn/stu_announcement_online.aspx", headers=headers)
     soup = BeautifulSoup(r.text,"lxml")
     for i in soup.find_all("a", {'href': re.compile('CurrAccId')},limit=1):
-        #print (i.get('href')[len(i.get('href'))-46:len(i.get('href'))])
         return i.get('href')[len(i.get('href'))-46:len(i.get('href'))]
 
-
-
-
-
-def get_Course_EveryThing(request, enterNum):#給課程id, 進入課程, 爬公告
-    unit = userData.objects.get(cID = request.session ["user_id"])#從session 抓你的帳號 比對資料庫然後抓帳號密碼
-    userName = unit.cName#在模板輸出使用者的姓名
+def check_ANN(course_URL, uid,upass):#給課程id, 進入課程, 爬公告
     s= requests.session()
     headers={"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36"}
     login_DataFrom = {'__EVENTTARGET': '',
@@ -102,20 +110,38 @@ def get_Course_EveryThing(request, enterNum):#給課程id, 進入課程, 爬公�
     p= s.post(q.url, headers=headers, data=login_DataFrom)#登入取得coolies跟session
     stu_announcement= s.get("http://ecampus.nqu.edu.tw/eCampus3P/Learn/stu_announcement_online.aspx")
     soup = BeautifulSoup(stu_announcement.text, "lxml")
-    n_File_Floder_url = "./user_Check/"+unit.cID+"/"+soup.title.string.strip()[15:]
-    print(n_File_Floder_url)
-    if not os.path.isdir(n_File_Floder_url):
-        os.mkdir(n_File_Floder_url)
+    announcement_title =[]#公告標題
+    for i in soup.find_all("span", id=re.compile("_lbCaption")):#公告標題
+        announcement_title.append(i.string)
+
+
+
+def get_Course_EveryThing(request, enterNum):#給課程id, 進入課程, 爬公告
+    unit = userData.objects.get(cID = request.session ["user_id"])#從session 抓你的帳號 比對資料庫然後抓帳號密碼
+    s= requests.session()
+    headers={"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36"}
+    login_DataFrom = {'__EVENTTARGET': '',
+        '__EVENTARGUMENT': '', 
+        '__VIEWSTATE': ' /wEPDwUKMjAzODk5NzA3Mg8WAh4EX2N0bAUMYnRuTG9naW5IZWxwFgICAw9kFiYCAQ8WAh4KYmFja2dyb3VuZAUWaW1hZ2VzL3poLVRXL2xvZ2luLmdpZhYMAgEPFgIeBXN0eWxlBRpwb3NpdGlvbjpyZWxhdGl2ZTtsZWZ0OjBweBYCAgEPDxYCHghJbWFnZVVybAUTaW1hZ2VzL3poLVRXL2lkLmdpZmRkAgMPFgIfAgUacG9zaXRpb246cmVsYXRpdmU7bGVmdDowcHhkAgUPFgIfAgUacG9zaXRpb246cmVsYXRpdmU7bGVmdDowcHgWAmYPZBYCAgEPDxYCHwMFGWltYWdlcy96aC1UVy9wYXNzd29yZC5naWZkZAIHDxYCHwIFGnBvc2l0aW9uOnJlbGF0aXZlO2xlZnQ6MHB4ZAIJD2QWCAIBDw8WBh4IQ3NzQ2xhc3MFC21lbnVfdGV4dDAyHgRUZXh0BQ5b5b+Y6KiY5a+G56K8XR4EXyFTQgICZGQCAw8PFgYfBAUQbWVudV90ZXh0MDJfb190dx8FBQ5b55m75YWl6Kqq5piOXR8GAgJkZAIFDw8WBh8EBQttZW51X3RleHQwMh8FBQ5b6Kiq5a6i5Y+D6KeAXR8GAgJkZAIHDw8WCB8EBQttZW51X3RleHQwMh8FBQ5b5Y+D6KeA6Kqy56iLXR8GAgIeB1Zpc2libGVoZGQCCw8PFgIfAwUcaW1hZ2VzL3poLVRXL2xvZ2luIEVudGVyLmpwZxYEHgtvbm1vdXNlb3ZlcgU4amF2YXNjcmlwdDp0aGlzLnNyYz0naW1hZ2VzL3poLVRXL2xvZ2luIEVudGVyX292ZHcuanBnJzseCm9ubW91c2VvdXQFM2phdmFzY3JpcHQ6dGhpcy5zcmM9J2ltYWdlcy96aC1UVy9sb2dpbiBFbnRlci5qcGcnO2QCAw8PFgIfAwUTaW1hZ2VzL3poLVRXL0dCLmdpZmRkAgQPDxYCHwMFE2ltYWdlcy96aC1UVy9Fbi5naWZkZAIGDw8WAh8DBRZpbWFnZXMvemgtVFcvdGl0ZWwuanBnZGQCCA8PFgYfBAULbWVudV90ZXh0MDIfBQUOW+ebuOmXnOmAo+e1kF0fBgICZGQCCg8PFgYfBAULbWVudV90ZXh0MDIfBQUOW+W5s+WPsOS7i+e0uV0fBgICZGQCDA8PFgYfBAULbWVudV90ZXh0MDIfBQUOW+W4uOimi+WVj+mhjF0fBgICZGQCDg8PFgYfBAULbWVudV90ZXh0MDIfBQUOW+mAo+e1oeaIkeWAkV0fBgICZGQCEA8PFggfBAULbWVudV90ZXh0MDIfBQUOW+eUs+iri+W4s+iZn10fBgICHwdoZGQCFA8PFgIfAwUdaW1hZ2VzL3poLVRXL21haW4gcGljdHVyZS5qcGdkZAIWDxYCHwEFH2ltYWdlcy96aC1UVy9sb2dpbiB0ZXh0IHBhbi5qcGdkAhgPDxYCHwMFFWltYWdlcy96aC1UVy9uZXdzLmpwZ2RkAhwPDxYCHwMFGmltYWdlcy96aC1UVy9mcmFtZV90b3AuZ2lmZGQCHg8WAh8BBR9pbWFnZXMvemgtVFcvbG9naW4gdGV4dCBwYW4uanBnZAIgDxYEHgZoZWlnaHQFBTI0MHB4HgNzcmMFFy4uL2xvZ2luX0hlbHBJbmRleC5hc3B4ZAIiDxYCHwEFGGltYWdlcy96aC1UVy9mcmFtZV9SLmdpZmQCJA8PFgIfAwUaaW1hZ2VzL3poLVRXL2ZyYW1lX2Rvdy5naWZkZAIoDxYEHwUFHGVDYW1wdXMgSUlJIHYxLjYuMDkxOTguMDEwNDAfB2dkAi4PDxYCHwMFH2ltYWdlcy96aC1UVy9sb2dvIG9mIDNwcm9iZS5naWZkZBgBBR5fX0NvbnRyb2xzUmVxdWlyZVBvc3RCYWNrS2V5X18WAwUIYnRuTG9naW4FCmJ0bkNoaW5lc2UFCmJ0bkVuZ2xpc2hqzHG9hdaHqyty7OyKa8boh3mpUA==',
+        '__VIEWSTATEGENERATOR': '8B4B7C2A',
+        'txtLoginId': unit.cID,
+        'txtLoginPwd': unit.cPassword,
+        'btnLogin.x' : '42',
+        'btnLogin.y' : '25',}
+    q= s.get("http://ecampus.nqu.edu.tw/eCampus3P/Learn/stu_course_default.aspx?CourseId="+enterNum+"&Role=Student", headers=headers)#用課程連結進去拿到session
+    p= s.post(q.url, headers=headers, data=login_DataFrom)#登入取得coolies跟session
+    stu_announcement= s.get("http://ecampus.nqu.edu.tw/eCampus3P/Learn/stu_announcement_online.aspx")
+    soup = BeautifulSoup(stu_announcement.text, "lxml")
     announcement_title =[]#公告標題
     announcement_time =[]#公告日期
     announcement_text =[]#公告內容
     announcement_info =[]#合起來放在html上一個for迴圈出來
     for i in soup.find_all("span", id=re.compile("_lbCaption")):#公告標題
-        announcement_title.append(i.string)
+        announcement_title.append(i.string.strip())
     for i in soup.find_all("span", id=re.compile("_lbBeginDate")):#公告日期
-        announcement_time.append(i.string)
+        announcement_time.append(i.string.strip())
     for i in soup.find_all("span", id=re.compile("_lbContent")):#公告內容
-        announcement_text.append(i.get_text())#因為有些會有在span中會有一些很奇怪的東西不能用string
+        announcement_text.append(i.get_text().strip())#因為有些會有在span中會有一些很奇怪的東西不能用string
     announcement_info= zip(announcement_title,announcement_time,announcement_text)#這要丟到html裡面 順序為 標題 日期 公告
     #############################
     #####存儲公告文件只存一次#######
@@ -124,7 +150,29 @@ def get_Course_EveryThing(request, enterNum):#給課程id, 進入課程, 爬公�
     print (request.session ["user_id"])
     soup.decompose = True
     soup.clear()
-    return render(request, "courseInfo.html", locals())#會跑到course.html模板
 
-    #一起弄在一個html上所以應該是要抓一個soup
+    course_DOC_Name =[]
+    course_DOC_URL =[]
+    course_DOC_Total=[]
+    doc=s.get("http://ecampus.nqu.edu.tw/eCampus3P/Learn/stu_materials_default.aspx?CurrCourseId="+enterNum+"&CurrRole=Student&CurrAccId="+unit.cCurrAccID)#我
+    soup = BeautifulSoup(doc.text,"lxml") 
+    for u in soup.find_all("tr", class_= re.compile("Tbl")):
+        course_DOC_Name.append(u.find("td").get_text())
+    for i in soup.find_all("input", onclick= re.compile("openDialog_hWin")):
+        course_DOC_URL.append(i["onclick"][79:115])
+    course_DOC_Total= dict(zip(course_DOC_Name, course_DOC_URL))
+    print(len(course_DOC_Total))#目前文件數量
+    soup.decompose = True
+    soup.clear()
+    hw= s.get("http://ecampus.nqu.edu.tw/eCampus3P/Learn/stu_materials_homework_list.aspx?CurrCourseId="+enterNum+"&CurrRole=Student&CurrAccId="+unit.cCurrAccID)
+    soup= BeautifulSoup(hw.text, "lxml")
+    print(soup.prettify())
+    
+
+
+
+
+
+    return render(request, "course/courseInfo.html", locals())#會跑到course.html模板
+    #
     #bfs算法
