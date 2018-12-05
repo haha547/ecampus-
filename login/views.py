@@ -6,7 +6,6 @@ import requests#爬蟲
 import re
 import sys
 import os
-import pyrebase
 config = {
     "apiKey": "AIzaSyBzIE28WS3omyQgfeoz_3h2qcyu_KzD_Wg",
     "authDomain": "nquyes.firebaseapp.com",
@@ -15,7 +14,6 @@ config = {
     "storageBucket": "nquyes.appspot.com",
     "messagingSenderId": "659605466677"
   }
-firebase= pyrebase.initialize_app(config)
 
 
 

@@ -57,6 +57,7 @@
 /* === Import template variables === */
 /*-------------------------------------------------------------------*/
 /* === SCSS Compass Functions === */
+@import url("https://fonts.googleapis.com/earlyaccess/notosanstc.css");
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700");
 @import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700");
 @-moz-keyframes flash {
@@ -7424,8 +7425,8 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Sans TC";
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace, "Noto Sans TC"; }
 
 *,
 *::before,
@@ -7448,7 +7449,7 @@ article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, s
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Sans TC";
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -7551,7 +7552,7 @@ pre,
 code,
 kbd,
 samp {
-  font-family: monospace, monospace;
+  font-family: monospace, monospace, "Noto Sans TC";
   font-size: 1em; }
 
 pre {
@@ -7810,7 +7811,7 @@ code,
 kbd,
 pre,
 samp {
-  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace, "Noto Sans TC"; }
 
 code {
   font-size: 87.5%;
@@ -11112,7 +11113,7 @@ button.close {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Sans TC";
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -11197,7 +11198,7 @@ button.close {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Sans TC";
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -13680,7 +13681,7 @@ input:focus {
 .sidebar {
   min-height: calc(100vh - 63px);
   background: #ffffff;
-  font-family: "Poppins", sans-serif;
+  font-family: "Poppins", "Noto Sans TC", sans-serif;
   padding: 0;
   width: 255px;
   z-index: 11;
@@ -13869,7 +13870,7 @@ input:focus {
 
 /* Navbar */
 .navbar.default-layout {
-  font-family: "Poppins", sans-serif;
+  font-family: "Poppins", sans-serif, "Noto Sans TC";
   background: linear-gradient(120deg, #00e4d0, #5983e8);
   transition: background 0.25s ease;
   -webkit-transition: background 0.25s ease;
@@ -14005,7 +14006,7 @@ input:focus {
 :root,
 body {
   font-size: 1rem;
-  font-family: "Poppins", sans-serif; }
+  font-family: "Poppins", "Noto Sans TC", sans-serif; }
 
 .h1,
 .h2,
@@ -14019,7 +14020,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Poppins", sans-serif;
+  font-family: "Poppins", "Noto Sans TC", sans-serif;
   font-weight: 500; }
 
 p {
@@ -14134,7 +14135,7 @@ address p {
   margin: 0.38rem 0 0.75rem; }
 
 .card-title {
-  font-family: "Poppins", sans-serif;
+  font-family: "Poppins", "Noto Sans TC", sans-serif;
   font-weight: 500;
   color: #404852;
   margin-bottom: 22px;
@@ -14144,13 +14145,13 @@ address p {
     text-align: right; }
 
 .card-subtitle {
-  font-family: "Poppins", sans-serif;
+  font-family: "Poppins", "Noto Sans TC", sans-serif;
   margin-top: 0.625rem;
   margin-bottom: 0.625rem; }
 
 .card-description {
   margin-bottom: 0.9375rem;
-  font-family: "Poppins", sans-serif; }
+  font-family: "Poppins", "Noto Sans TC", sans-serif; }
   .rtl .card-description {
     text-align: right; }
 
@@ -14251,7 +14252,7 @@ pre {
   -ms-transition: all 0.25s ease;
   border-top: 1px solid #f2f2f2;
   font-size: calc(13px - 0.05rem);
-  font-family: "Poppins", sans-serif; }
+  font-family: "Poppins", "Noto Sans TC", sans-serif; }
   .footer a {
     color: #00ce68;
     font-size: inherit; }
@@ -14493,6 +14494,8 @@ pre {
       border: 2px solid #cbcbcb; }
     .purchace-popup > div > span .btn.purchase-button {
       background-color: #d209fa;
+      font-family: inherit, "Noto Sans TC";
+      font-weight: 300;
       *zoom: 1;
       filter: progid:DXImageTransform.Microsoft.gradient(gradientType=1, startColorstr='#FFD209FA', endColorstr='#FF4F81D4');
       background-image: -owg-linear-gradient(left, #d209fa 1%, #4f81d4 100%);
@@ -14545,7 +14548,7 @@ pre {
     width: 40%; }
     .card-revenue-table .revenue-item .revenue-amount p {
       font-size: 1.25rem;
-      font-family: "Poppins", sans-serif;
+      font-family: "Poppins", "Noto Sans TC", sans-serif;
       font-weight: 600;
       text-align: right; }
       .rtl .card-revenue-table .revenue-item .revenue-amount p {
@@ -14557,7 +14560,7 @@ pre {
   color: #ffffff; }
   .card-revenue .highlight-text {
     font-size: 1.875rem;
-    font-family: "Poppins", sans-serif;
+    font-family: "Poppins", "Noto Sans TC", sans-serif;
     font-weight: 500; }
   .card-revenue .badge {
     background-color: rgba(255, 255, 255, 0.2);
@@ -14633,7 +14636,7 @@ pre {
   font-weight: initial;
   line-height: 1;
   padding: 0.2rem 0.3rem;
-  font-family: "Poppins", sans-serif;
+  font-family: "Poppins", "Noto Sans TC", sans-serif;
   font-weight: 600; }
   .badge:empty {
     display: inline-block;
@@ -14770,7 +14773,7 @@ pre {
 .btn {
   font-size: 0.875rem;
   line-height: 1;
-  font-family: "Poppins", sans-serif; }
+  font-family: "Poppins", "Noto Sans TC", sans-serif; }
   .btn i {
     margin-right: 0.3125rem; }
   .btn .btn-label:before {
@@ -15672,7 +15675,7 @@ pre {
 
 .form-control {
   border: 1px solid #f2f2f2;
-  font-family: "Poppins", sans-serif;
+  font-family: "Poppins", "Noto Sans TC", sans-serif;
   font-size: 0.75rem;
   padding: 0.56rem 0.75rem;
   line-height: 14px;
@@ -15721,7 +15724,7 @@ select.form-control {
     -webkit-align-items: center;
     align-items: center;
     padding: 15px;
-    font-family: "Poppins", sans-serif;
+    font-family: "Poppins", "Noto Sans TC" sans-serif;
     font-size: 13px; }
     .icons-list > div i {
       display: inline-block;
@@ -16029,7 +16032,7 @@ ul {
     .preview-list .preview-item .preview-item-content p {
       margin-bottom: 10px; }
       .preview-list .preview-item .preview-item-content p .content-category {
-        font-family: "Poppins", sans-serif;
+        font-family: "Poppins", "Noto Sans TC" sans-serif;
         padding-right: 15px;
         border-right: 1px solid #f2f2f2; }
   .preview-list .preview-item .preview-actions {
@@ -16066,7 +16069,7 @@ ul {
   .table thead th {
     border-top: 0;
     border-bottom-width: 1px;
-    font-family: "Poppins", sans-serif;
+    font-family: "Poppins", "Noto Sans TC", sans-serif;
     font-weight: 500; }
     .table thead th i {
       margin-left: 0.325rem; }
@@ -16134,7 +16137,7 @@ ul {
         border-color: #e5e5e5;
         color: #b6b6b6; }
   .auth.theme-one .auto-form-wrapper .form-group .submit-btn {
-    font-family: "Poppins", sans-serif;
+    font-family: "Poppins", "Noto Sans TC", sans-serif;
     font-size: 13px;
     padding: 12px 8px;
     font-weight: 600; }
@@ -16243,7 +16246,7 @@ ul {
           border-right: none;
           color: #dfdfdf; }
       .auth.theme-two .auto-form-wrapper form .form-group .submit-btn {
-        font-family: "Poppins", sans-serif;
+        font-family: "Poppins", "Noto Sans TC", sans-serif;
         font-size: 13px;
         padding: 11px 33px;
         font-weight: 600;
