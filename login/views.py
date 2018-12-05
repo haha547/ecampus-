@@ -12,6 +12,7 @@ config = {
     "storageBucket": "nquyes.appspot.com",
     "messagingSenderId": "659605466677"
   }
+firebase= pyrebase.initialize_app(config)
 
 #################################################################
 
