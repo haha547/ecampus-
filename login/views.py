@@ -120,27 +120,25 @@ def get_Course_EveryThing(request, enterNum):#給課程id, 進入課程, 爬公�
     for i in soup.find_all("tr", class_= re.compile("Tbl")):
         course_DOC_Name.append(i.find("td").get_text())
     for i in soup.find_all("input", onclick= re.compile("openDialog_hWin")):
-        course_DOC_URL.append(i["onclick"][79:115])
+        course_DOC_URL.append(str("http://ecampus.nqu.edu.tw/eCampus3P/Learn/web_open_dialog.aspx?DialogTitle=&EventObject=null&TargetUrl=common_view_attach_media_list.aspx?ReferenceSourceId=" + i["onclick"][79:115] + ",CourseId=" + enterNum))
     for i in soup.find_all("tr", style="overflow:hidden;"):#找公告時間
         for u in i.find_all(style="overflow:hidden;")[5]:
             if len(u.string) == 22:
-                a= datetime.strptime(u.string[0:10], "%Y/%m/%d")
-                print(a)
+                a= datetime.strptime(u.string[0:10], "%Y/%m/%d").date()
             elif len(u.string) == 21 :
-                a= datetime.strptime(u.string[0:9], "%Y/%m/%d")
-                print(a)
+                a= datetime.strptime(u.string[0:9], "%Y/%m/%d").date()
             else :
-                a= datetime.strptime(u.string[0:8], "%Y/%m/%d")
-                print(a) 
+                a= datetime.strptime(u.string[0:8], "%Y/%m/%d").date()
     course_DOC_Total= dict(zip(course_DOC_Name, course_DOC_URL))
-    
     soup.decompose = True
     soup.clear()
     hw= s.get("http://ecampus.nqu.edu.tw/eCampus3P/Learn/stu_materials_homework_list.aspx?CurrCourseId="+enterNum+"&CurrRole=Student&CurrAccId="+unit.cCurrAccID)
     soup= BeautifulSoup(hw.text, "lxml")#抓到功課頁面我好帥我好厲害ㄏ
     hw_list_Name=[]
     hw_list_DeadTime=[]
+    print(soup)
     return render(request, "course/courseInfo.html", locals())#會跑到course.html模板
     ##以下要清空查到的東西
+
     del course_DOC_Total, course_DOC_Name, course_DOC_URL, hw_list_DeadTime, hw_list_Name, announcement_info, announcement_text, announcement_time, announcement_time, announcement_title
     gc.collect()

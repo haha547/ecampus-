@@ -4,8 +4,10 @@
 {% endfor %}
 以上-----------------公告<br>
 {% for key,value in course_DOC_Total.items %}
-{{key}}--->{{value}}<br>
+
+<a href="{{value}}">{{key}}</a>
+
+<br>
 {% endfor %}<br>
 以上-----------------文件<br>
 以上-----------------功課
-
